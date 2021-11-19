@@ -1,22 +1,13 @@
 from model.core.operators import Operators
 import pickle
+from abc import ABC, abstractmethod
 
 
-class Calculation:
-    def __init__(self, operator:Operators, operant1, operant2):
-        self._operator = operator
-        self._operant1 = operant1
-        self._operant2 = operant2
+class Calculation(ABC):
+    def __init__(self, *args):
+        self._args = args
 
-    def encode(self):
-        byte_obj = b''
-        pickle.dump(self, byte_obj)
-        return byte_obj
-
-    def decode(self):
-        return pickle.load(self)
-
-
+    @abstractmethod
     def calculate(self):
         """
         returns calculated value operator bağlı olarak
