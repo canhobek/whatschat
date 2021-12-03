@@ -18,7 +18,6 @@ class CalculationServer:
             self.handle_client(clientSocket)
 
 
-
     def handle_client(self, clientSocket):
         cmd = clientSocket.recv(1024).decode()
 
@@ -28,6 +27,6 @@ class CalculationServer:
         if result == None:
             self._is_alive = False
 
-        clientSocket.send((result).encode())
+        clientSocket.send(str(result).encode())
         print("Calculation Completed ")
         clientSocket.close()

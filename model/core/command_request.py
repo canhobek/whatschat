@@ -7,13 +7,13 @@ class ComandRequest():
         self._data = t1
 
     def encode(self):
-        obj = object()
-        pickle.dump(self, obj)
-        return obj
+        f = open("tmp.bin", "wb")
+        pickle.dump(self, f)
+        return f
 
-
-    def decode(self):
-        return pickle.load(self)
+    @staticmethod
+    def decode(self, f):
+        return pickle.load(f)
 
     @property
     def command(self):
@@ -22,4 +22,7 @@ class ComandRequest():
     @property
     def data(self):
         return self._data
+
+
+
 

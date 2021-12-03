@@ -1,5 +1,5 @@
 import socket
-from socket import socket
+from socket import socket, error
 from model.core.command_request import ComandRequest
 from model.core.operators import Operators
 
@@ -23,7 +23,7 @@ class Client:
                 if cr == "exit":
                     break
                 msg = self._clientSocket.recv(1024)
-                print(msg.decode())
+                print(ComandRequest.decode(msg))
             except socket.error as err:
                 pass
 
