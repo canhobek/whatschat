@@ -1,6 +1,6 @@
 import socket
 from socket import socket, error
-from model.core.command_request import ComandRequest
+from model.core.command_request import CommandRequest
 from model.core.operators import Operators
 
 
@@ -18,12 +18,12 @@ class Client:
             try:
                 op = input("Enter operator:")
                 operands = eval(input("Enter numbers:"))
-                cr = ComandRequest(op, operands)
+                cr = CommandRequest(op, operands)
                 self._clientSocket.send(cr.encode())
                 if cr == "exit":
                     break
                 msg = self._clientSocket.recv(1024)
-                print(ComandRequest.decode(msg))
+                print(CommandRequest.decode(msg))
             except socket.error as err:
                 pass
 

@@ -1,4 +1,4 @@
-from model.core.command_request import ComandRequest
+from model.core.command_request import CommandRequest
 from model.core.operators import Operators as O
 from model.core.add_command import AddCommand
 from model.core.sub_command import SubCommand

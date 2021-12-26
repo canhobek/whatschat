@@ -1,6 +1,7 @@
 from socket import socket as Socket
 from model.core.command_handler import CommandHandler
 
+
 class CalculationServer:
     PORT = 9043
 
@@ -11,16 +12,13 @@ class CalculationServer:
         self._is_alive = True
         self.__command_handler = CommandHandler()
 
-
     def listenClients(self):
         while self._is_alive:
             clientSocket, _ = self._severSocket.accept()  # tuple unpack
             self.handle_client(clientSocket)
 
-
     def handle_client(self, clientSocket):
         cmd = clientSocket.recv(1024).decode()
-
 
         result = self.__command_handler.execute_command(cmd)
 
